@@ -60,7 +60,7 @@ export default function DashboardScreen() {
           <TouchableOpacity
             onPress={() => {}}
             style={{
-              padding: 2, // add your desired padding here
+              padding: 2,
               borderRadius: 100,
               borderWidth: 2,
               borderColor: "#06192b",
