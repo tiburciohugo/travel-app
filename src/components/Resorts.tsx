@@ -6,10 +6,11 @@ import {
   FlatList,
 } from "react-native";
 import React from "react";
-import { colors, locations } from "../../data";
-import LocationCard from "./LocationCard";
+import { colors, resorts } from "../../data";
+import { Image } from "react-native";
+import ResortsCard from "./ResortsCard";
 
-export default function Discover() {
+export default function Resorts() {
   return (
     <View>
       <View
@@ -19,16 +20,16 @@ export default function Discover() {
           justifyContent: "space-between",
         }}
       >
-        <Text style={styles.title}>Descubra</Text>
+        <Text style={styles.title}>Resorts</Text>
         <TouchableOpacity onPress={() => {}}>
           <Text
             style={{
-              color: colors.blue[6],
+              color: colors.blue[4],
               fontSize: 16,
               marginLeft: 10,
             }}
           >
-            Ver tudo
+            Aproveite nossas ofertas
           </Text>
         </TouchableOpacity>
       </View>
@@ -36,10 +37,10 @@ export default function Discover() {
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
-        data={locations}
+        data={resorts}
         renderItem={({ item }) => (
           <View style={{ paddingHorizontal: 10 }}>
-            <LocationCard location={item} />
+            <ResortsCard resort={item} />
           </View>
         )}
       />

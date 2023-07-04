@@ -12,6 +12,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { colors, globalStyles } from "../../data";
 import Categories from "../components/Categories";
 import Discover from "../components/Discover";
+import Resorts from "../components/Resorts";
 import Search from "../components/Search";
 import Header from "../components/Header";
 
@@ -26,11 +27,7 @@ export default function DashboardScreen() {
   const navigation = useNavigation();
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const sections = [
-    { id: "categories" },
-    { id: "discover1" },
-    { id: "discover2" },
-  ];
+  const sections = [{ id: "categories" }, { id: "discover" }, { id: "resorts" }];
 
   const renderItem = ({ item }: RenderItemProps) => {
     if (item.id === "categories") {
@@ -43,6 +40,12 @@ export default function DashboardScreen() {
       return (
         <View style={styles.marginTop}>
           <Discover />
+        </View>
+      );
+    } else if (item.id.startsWith("resorts")) {
+      return (
+        <View style={styles.marginTop}>
+          <Resorts />
         </View>
       );
     }
@@ -77,9 +80,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#D6E0EE",
     height: "100%",
     paddingHorizontal: 30,
-    paddingBottom: 10,
+    paddingBottom: 20,
   },
-    title: {
+  title: {
     fontSize: 30,
     fontWeight: "bold",
     color: colors.blue[7],

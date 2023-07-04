@@ -2,45 +2,40 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { Image } from "react-native";
-import { colors, places } from "../../data";
+import { colors } from "../../data";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
+import { Location } from "../../types/types";
 
-export default function Card() {
+type LocationCardProps = {
+  location: Location;
+};
+
+export default function LocationCard({ location }: LocationCardProps) {
   const [isFavorite, setIsFavorite] = React.useState(false);
 
   return (
     <TouchableOpacity style={styles.card}>
       <TouchableOpacity
         onPress={() => setIsFavorite(!isFavorite)}
-        style={{
-          top: 10,
-          right: 10,
-          position: "absolute",
-          zIndex: 1,
-          backgroundColor: "#fafafa",
-          padding: 4,
-          borderRadius: 10,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
+        style={styles.favorite}
       >
         <Ionicons
           name="ios-heart"
           size={24}
-          color={isFavorite ? colors.blue[8] : "lightgray"}
+          color={isFavorite ? "red" : "lightgray"}
         />
       </TouchableOpacity>
 
       <Image
-        source={{ uri: places[0].image }}
-        alt="rio"
+        source={{ uri: location.image }}
+        alt={location.name}
         style={styles.image}
       />
 
       <Text style={styles.type}>Pacote</Text>
 
       <View style={{ paddingHorizontal: 10 }}>
-        <Text style={styles.title}>Rio de Janeiro</Text>
+        <Text style={styles.title}>{location.name}</Text>
         <View style={styles.travelContainer}>
           <MaterialCommunityIcons
             name="airplane-takeoff"
@@ -48,7 +43,7 @@ export default function Card() {
             color={colors.blue[1]}
           />
 
-          <Text style={styles.travel}>28 ago 2023</Text>
+          <Text style={styles.travel}>{location.departureDate}</Text>
         </View>
         <View style={styles.travelContainer}>
           <MaterialCommunityIcons
@@ -60,13 +55,13 @@ export default function Card() {
             }}
           />
 
-          <Text style={styles.travel}>30 ago 2023</Text>
+          <Text style={styles.travel}>{location.returnDate}</Text>
         </View>
 
         <Text style={{ fontSize: 12, marginTop: 5 }}>a partir de</Text>
         <View style={styles.priceContainer}>
           <Text style={{ fontSize: 12 }}>R$ </Text>
-          <Text style={styles.price}>1.234</Text>
+          <Text style={styles.price}>{location.price}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -82,7 +77,19 @@ const styles = StyleSheet.create({
     position: "relative",
     paddingBottom: 10,
   },
-  image: { width: 150, height: 150, borderRadius: 20, resizeMode: "contain" },
+  favorite: {
+    top: 10,
+    right: 10,
+    position: "absolute",
+    zIndex: 1,
+    backgroundColor: "#fafafa",
+    padding: 4,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  image: { width: 150, height: 150, borderTopLeftRadius: 20,
+    borderTopRightRadius: 20, resizeMode: "cover" },
   title: {
     fontWeight: "bold",
     fontSize: 16,
