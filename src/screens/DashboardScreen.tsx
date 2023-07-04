@@ -5,6 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { SearchBar } from "@rneui/themed";
 import { colors, globalStyles } from "../../data";
+import Categories from "../components/Categories";
 export default function DashboardScreen() {
   const navigation = useNavigation();
   const [search, setSearch] = React.useState("");
@@ -34,7 +35,6 @@ export default function DashboardScreen() {
         style={{
           justifyContent: "space-between",
           flexDirection: "row",
-          paddingHorizontal: 30,
           marginTop: 30,
           alignItems: "center",
         }}
@@ -63,7 +63,7 @@ export default function DashboardScreen() {
               padding: 2,
               borderRadius: 100,
               borderWidth: 2,
-              borderColor: "#06192b",
+          borderColor: colors.blue[7]    ,
               marginLeft: 10,
             }}
           >
@@ -84,17 +84,16 @@ export default function DashboardScreen() {
       <View
         style={{
           flexDirection: "row",
-          paddingHorizontal: 30,
           alignItems: "center",
         }}
       >
         <MaterialIcons
           name="location-pin"
           size={24}
-          color="#7392B7"
+          color={colors.blue[2]}
         />
 
-        <Text style={{ marginLeft: 5, fontSize: 12, color: "#7392B7" }}>
+        <Text style={{ marginLeft: 5, fontSize: 12, color: colors.blue[2] }}>
           Rolândia, PR
         </Text>
       </View>
@@ -105,11 +104,17 @@ export default function DashboardScreen() {
           containerStyle={[
             {
               borderRadius: 15,
+              justifyContent: "flex-start",
+              paddingHorizontal: 10,
             },
             globalStyles.dropShadow,
           ]}
           inputContainerStyle={{}}
-          inputStyle={{ color: colors.blue[3] }}
+          inputStyle={{
+            color: colors.blue[3],
+            justifyContent: "flex-start",
+            marginLeft: 10,
+          }}
           rightIconContainerStyle={{}}
           onChangeText={updateSearch}
           placeholder="Procure por lugares..."
@@ -119,6 +124,10 @@ export default function DashboardScreen() {
           showLoading={isLoading ? true : false}
         />
       </View>
+
+      <View style={{ marginTop: 30 }}>
+        <Categories />
+      </View>
     </SafeAreaView>
   );
 }
@@ -127,14 +136,14 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#D6E0EE",
     height: "100%",
+    paddingHorizontal: 30,
   },
   searchBarContainer: {
     marginTop: 30,
-    paddingHorizontal: 30,
   },
   title: {
     fontSize: 30,
     fontWeight: "bold",
-    color: "#06192b",
+    color: colors.blue[7],
   },
 });
