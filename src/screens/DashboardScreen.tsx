@@ -1,27 +1,54 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  FlatList,
+} from "react-native";
 import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { SearchBar } from "@rneui/themed";
 import { colors, globalStyles } from "../../data";
 import Categories from "../components/Categories";
+import Discover from "../components/Discover";
+import Search from "../components/Search";
+import Header from "../components/Header";
+
+type Item = {
+  id: string;
+};
+
+type RenderItemProps = {
+  item: Item;
+};
 export default function DashboardScreen() {
   const navigation = useNavigation();
-  const [search, setSearch] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const updateSearch = (search: string) => {
-    setSearch(search);
-  };
+  const sections = [
+    { id: "categories" },
+    { id: "discover1" },
+    { id: "discover2" },
+  ];
 
-  const searchIcon = (
-    <MaterialIcons
-      name="search"
-      size={24}
-      color={colors.blue[3]}
-    />
-  );
+  const renderItem = ({ item }: RenderItemProps) => {
+    if (item.id === "categories") {
+      return (
+        <View style={styles.marginTop}>
+          <Categories />
+        </View>
+      );
+    } else if (item.id.startsWith("discover")) {
+      return (
+        <View style={styles.marginTop}>
+          <Discover />
+        </View>
+      );
+    }
+
+    return null;
+  };
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -31,103 +58,16 @@ export default function DashboardScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View
-        style={{
-          justifyContent: "space-between",
-          flexDirection: "row",
-          marginTop: 30,
-          alignItems: "center",
-        }}
-      >
-        <Text style={styles.title}>Olá, Usuário</Text>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: 10,
-          }}
-        >
-          <TouchableOpacity onPress={() => {}}>
-            <Ionicons
-              name="md-notifications"
-              size={24}
-              color="black"
-              style={{ backgroundColor: "#fff", borderRadius: 100, padding: 5 }}
-            />
-          </TouchableOpacity>
+      <Header />
 
-          <TouchableOpacity
-            onPress={() => {}}
-            style={{
-              padding: 2,
-              borderRadius: 100,
-              borderWidth: 2,
-          borderColor: colors.blue[7]    ,
-              marginLeft: 10,
-            }}
-          >
-            <Image
-              source={{
-                uri: "https://xsgames.co/randomusers/avatar.php?g=male",
-              }}
-              style={{
-                width: 35,
-                height: 35,
-                borderRadius: 100,
-              }}
-            />
-          </TouchableOpacity>
-        </View>
-      </View>
-
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-        }}
-      >
-        <MaterialIcons
-          name="location-pin"
-          size={24}
-          color={colors.blue[2]}
-        />
-
-        <Text style={{ marginLeft: 5, fontSize: 12, color: colors.blue[2] }}>
-          Rolândia, PR
-        </Text>
-      </View>
-
-      <View style={styles.searchBarContainer}>
-        <SearchBar
-          platform="android"
-          containerStyle={[
-            {
-              borderRadius: 15,
-              justifyContent: "flex-start",
-              paddingHorizontal: 10,
-            },
-            globalStyles.dropShadow,
-          ]}
-          inputContainerStyle={{}}
-          inputStyle={{
-            color: colors.blue[3],
-            justifyContent: "flex-start",
-            marginLeft: 10,
-          }}
-          rightIconContainerStyle={{}}
-          onChangeText={updateSearch}
-          placeholder="Procure por lugares..."
-          placeholderTextColor={colors.blue[3]}
-          value={search}
-          searchIcon={searchIcon}
-          showLoading={isLoading ? true : false}
-        />
-      </View>
-
-      <View style={{ marginTop: 30 }}>
-        <Categories />
-      </View>
+      <FlatList
+        style={{ marginTop: 10 }}
+        data={sections}
+        keyExtractor={(item) => item.id}
+        renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
+        ListHeaderComponent={() => <Search />}
+      />
     </SafeAreaView>
   );
 }
@@ -137,13 +77,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#D6E0EE",
     height: "100%",
     paddingHorizontal: 30,
+    paddingBottom: 10,
   },
-  searchBarContainer: {
-    marginTop: 30,
-  },
-  title: {
+    title: {
     fontSize: 30,
     fontWeight: "bold",
     color: colors.blue[7],
+  },
+  marginTop: {
+    marginTop: 30,
   },
 });

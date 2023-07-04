@@ -7,50 +7,7 @@ import {
 } from "react-native";
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
-import { colors } from "../../data";
-
-const categories = [
-  {
-    id: 1,
-    name: "Locais",
-    icon: "restaurant",
-  },
-  {
-    id: 2,
-    name: "Cafes",
-    icon: "local-cafe",
-  },
-  {
-    id: 3,
-    name: "Hotéis",
-    icon: "hotel",
-  },
-  {
-    id: 4,
-    name: "Postos",
-    icon: "local-gas-station",
-  },
-  {
-    id: 5,
-    name: "Lojas",
-    icon: "shopping-bag",
-  },
-  {
-    id: 6,
-    name: "Parques",
-    icon: "park",
-  },
-  {
-    id: 7,
-    name: "Cinemas",
-    icon: "local-movies",
-  },
-  {
-    id: 8,
-    name: "Aeroportos",
-    icon: "local-airport",
-  },
-];
+import { colors, categories } from "../../data";
 
 export default function Categories() {
   return (
@@ -81,7 +38,7 @@ export default function Categories() {
         data={categories}
         keyExtractor={(item) => item.id.toString()} // Added keyExtractor for proper keys
         renderItem={({ item }) => (
-          <View
+          <TouchableOpacity onPress={() => {}}
             style={{
               alignItems: "center",
               gap: 5,
@@ -91,7 +48,7 @@ export default function Categories() {
           >
             <View
               style={{
-                backgroundColor: colors.blue[7],
+                backgroundColor: colors.blue[8],
                 padding: 20,
                 borderRadius: 100,
               }}
@@ -104,7 +61,7 @@ export default function Categories() {
               />
             </View>
             <Text style={styles.subtitle}>{item.name}</Text>
-          </View>
+          </TouchableOpacity>
         )}
       />
     </View>
@@ -119,7 +76,7 @@ const styles = StyleSheet.create({
     color: colors.blue[7],
   },
   subtitle: {
-    fontWeight: "bold",
+    fontWeight: "500",
     fontSize: 16,
     color: colors.blue[7],
   },
