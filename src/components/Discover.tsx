@@ -8,8 +8,14 @@ import {
 import React from "react";
 import { colors, locations } from "../../data";
 import LocationCard from "./LocationCard";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../types/types";
 
 export default function Discover() {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   return (
     <View>
       <View
@@ -20,7 +26,7 @@ export default function Discover() {
         }}
       >
         <Text style={styles.title}>Descubra</Text>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={() => navigation.navigate("Locations")}>
           <Text
             style={{
               color: colors.blue[6],

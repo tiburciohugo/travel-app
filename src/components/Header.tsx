@@ -2,8 +2,14 @@ import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
 import React from 'react'
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { colors } from '../../data';
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from 'src/types/types';
 
 export default function Header() {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   return (
     <>
       <View
@@ -33,7 +39,7 @@ export default function Header() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => {}}
+            onPress={() => navigation.navigate("Profile")}
             style={{
               padding: 2,
               borderRadius: 100,
@@ -69,7 +75,7 @@ export default function Header() {
         />
 
         <Text style={{ marginLeft: 5, fontSize: 12, color: colors.blue[2] }}>
-          Rolândia, PR
+          Curitiba, PR
         </Text>
       </View>
     </>

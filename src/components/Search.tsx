@@ -53,6 +53,6 @@ export default function Search() {
 
 const styles = StyleSheet.create({
   searchBarContainer: {
-    marginTop: 30,
+    marginTop: 10,
   },
 });

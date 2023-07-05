@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginTop: 5,
+    paddingBottom: 10,
   },
   price: {
     fontWeight: "bold",

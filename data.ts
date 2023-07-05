@@ -1,5 +1,6 @@
 export const colors = {
   blue: {
+    bg: "#D6E0EE",
     1: "#759EB8",
     2: "#7392B7",
     3: "#B3C5D7",
@@ -27,6 +28,10 @@ export const colors = {
     1: "#ECA400",
     2: "#FFC857",
     3: "#FFED65",
+  },
+  gray: {
+    1: "#E5E5E5",
+    2: "#282828",
   },
 };
 

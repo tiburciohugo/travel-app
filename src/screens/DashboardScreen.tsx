@@ -77,7 +77,7 @@ export default function DashboardScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#D6E0EE",
+    backgroundColor: colors.blue.bg,
     height: "100%",
     paddingHorizontal: 30,
     paddingBottom: 20,

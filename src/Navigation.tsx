@@ -1,10 +1,15 @@
-import React from 'react'
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import WelcomeScreen from './screens/WelcomeScreen';
-import DashboardScreen from './screens/DashboardScreen';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import WelcomeScreen from "./screens/WelcomeScreen";
+import DashboardScreen from "./screens/DashboardScreen";
+import BottomTab from "./BottomTab";
+import ProfileScreen from "./screens/ProfileScreen";
+
+
 
 const Stack = createNativeStackNavigator();
+
 export default function Navigation() {
   return (
     <NavigationContainer>
@@ -15,9 +20,15 @@ export default function Navigation() {
           options={{ headerShown: false }}
         /> */}
         <Stack.Screen
-          name="Dashboard"
-          component={DashboardScreen}
+          name="MyTabs"
+          component={BottomTab}
+          options={{ headerShown: false }}
         />
+        <Stack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{ headerShown: false }}
+      />
       </Stack.Navigator>
     </NavigationContainer>
   );
