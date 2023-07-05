@@ -14,11 +14,11 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen
+        <Stack.Screen
           name="Welcome"
           component={WelcomeScreen}
           options={{ headerShown: false }}
-        /> */}
+        />
         <Stack.Screen
           name="MyTabs"
           component={BottomTab}

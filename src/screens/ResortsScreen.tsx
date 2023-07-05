@@ -8,6 +8,9 @@ import {
 import React from "react";
 import { colors, resorts } from "../../data";
 import ResortsCard from "../components/ResortsCard";
+import { Dimensions } from "react-native";
+
+const windowWidth = Dimensions.get("window").width;
 
 export default function ResortsScreen() {
   return (
@@ -28,7 +31,7 @@ export default function ResortsScreen() {
         data={resorts}
         style={{}}
         renderItem={({ item }) => (
-          <View style={{ paddingHorizontal: 10 }}>
+          <View style={{ width: windowWidth / 2 }}>
             <ResortsCard resort={item} />
           </View>
         )}
@@ -40,9 +43,11 @@ export default function ResortsScreen() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.blue.bg,
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    width: windowWidth,
+    paddingHorizontal: 10,
+    paddingBottom: 30,
   },
   title: {
     fontWeight: "bold",

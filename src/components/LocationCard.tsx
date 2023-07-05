@@ -5,6 +5,9 @@ import { Image } from "react-native";
 import { colors } from "../../data";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import { Location } from "../../types/types";
+import { Dimensions } from "react-native";
+
+const windowWidth = Dimensions.get("window").width;
 
 type LocationCardProps = {
   location: Location;
@@ -72,7 +75,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "#fff",
     borderRadius: 20,
-    width: 150,
+    width: windowWidth / 2.3,
     marginTop: 10,
     position: "relative",
     paddingBottom: 10,
@@ -88,8 +91,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  image: { width: 150, height: 150, borderTopLeftRadius: 20,
-    borderTopRightRadius: 20, resizeMode: "cover" },
+  image: {
+    width: windowWidth / 2.3,
+    height: 150,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    resizeMode: "cover",
+  },
   title: {
     fontWeight: "bold",
     fontSize: 16,

@@ -9,6 +9,18 @@ export type RootStackParamList = {
   Resorts: undefined;
   Profile: undefined;
   Settings: undefined;
+  MyTabs:
+    | { screen: "Home" }
+    | { screen: "Dashboard" }
+    | { screen: "Locations" }
+    | { screen: "Resorts" };
+};
+
+export type BottomTabParamList = {
+  Home: undefined;
+  Dashboard: undefined;
+  Locations: undefined;
+  Resorts: undefined;
 };
 
 export type Location = {

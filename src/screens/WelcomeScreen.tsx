@@ -37,7 +37,7 @@ export default function WelcomeScreen() {
         <Text style={styles.text}>O que você está procurando?</Text>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate("Dashboard")}
+          onPress={() => navigation.navigate("MyTabs", {screen: "Home"})}
           style={[styles.button, globalStyles.dropShadow]}
         >
           <Text style={{ color: "#fff" }}>Vamos lá</Text>

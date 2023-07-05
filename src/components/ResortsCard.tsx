@@ -3,6 +3,10 @@ import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../data";
 import { Resort } from "../../types/types";
+import { Dimensions } from "react-native";
+
+const windowWidth = Dimensions.get("window").width;
+
 
 type ResortCardProps = {
   resort: Resort;
@@ -58,7 +62,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "#fff",
     borderRadius: 20,
-    width: 200,
+    width: windowWidth/2.3,
     marginTop: 10,
     paddingbottom: 15,
   },
@@ -74,7 +78,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   image: {
-    width: 200,
+    width: "100%",
     height: 100,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
