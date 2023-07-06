@@ -36,6 +36,7 @@ export type Location = {
 };
 
 export type Resort = {
+  id: string;
   name: string;
   location: { city: string; state: string };
   image: string;

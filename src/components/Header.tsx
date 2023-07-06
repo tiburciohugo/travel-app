@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
 import React from 'react'
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { colors } from '../../data';
+import { colors, globalStyles } from '../../data';
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from 'src/types/types';
@@ -20,7 +20,9 @@ export default function Header() {
           alignItems: "center",
         }}
       >
-        <Text style={styles.title}>Olá, Usuário</Text>
+        <Text style={styles.title}>
+          Olá, Usuário
+        </Text>
         <View
           style={{
             flexDirection: "row",

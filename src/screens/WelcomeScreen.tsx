@@ -11,11 +11,9 @@ import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../types/types";
-import { globalStyles } from "../../data";
+import { backgroundImage, globalStyles } from "../../data";
 
-const image = {
-  uri: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop",
-};
+
 
 export default function WelcomeScreen() {
   const navigation =
@@ -24,7 +22,7 @@ export default function WelcomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={image}
+        source={backgroundImage}
         resizeMode="cover"
         style={styles.image}
       />
@@ -37,7 +35,7 @@ export default function WelcomeScreen() {
         <Text style={styles.text}>O que você está procurando?</Text>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate("MyTabs", {screen: "Home"})}
+          onPress={() => navigation.navigate("MyTabs", { screen: "Home" })}
           style={[styles.button, globalStyles.dropShadow]}
         >
           <Text style={{ color: "#fff" }}>Vamos lá</Text>

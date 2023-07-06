@@ -32,6 +32,7 @@ export const colors = {
   gray: {
     1: "#E5E5E5",
     2: "#282828",
+    3: "#333",
   },
 };
 
@@ -47,6 +48,10 @@ export const globalStyles = {
 
     elevation: 5,
   },
+};
+
+export const backgroundImage = {
+  uri: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop",
 };
 
 export const categories = [
@@ -207,7 +212,7 @@ export const locations = [
 
 export const resorts = [
   {
-    id: 1,
+    id: "1",
     name: "Sunrise Hotel",
     location: { city: "Rio de Janeiro", state: "RJ" },
     image:
@@ -216,7 +221,7 @@ export const resorts = [
     price: 450.0,
   },
   {
-    id: 2,
+    id: "2",
     name: "Seaside Hotel",
     location: { city: "Salvador", state: "BA" },
     image:
@@ -225,7 +230,7 @@ export const resorts = [
     price: 320.0,
   },
   {
-    id: 3,
+    id: "3",
     name: "Green Mountain Hotel",
     location: { city: "Belo Horizonte", state: "MG" },
     image:
@@ -234,7 +239,7 @@ export const resorts = [
     price: 510.0,
   },
   {
-    id: 4,
+    id: "4",
     name: "Songbird Corner Hotel",
     location: { city: "Curitiba", state: "PR" },
     image:
@@ -243,7 +248,7 @@ export const resorts = [
     price: 280.0,
   },
   {
-    id: 5,
+    id: "5",
     name: "Beautiful Beach Hotel",
     location: { city: "Recife", state: "PE" },
     image:
@@ -252,7 +257,7 @@ export const resorts = [
     price: 380.0,
   },
   {
-    id: 6,
+    id: "6",
     name: "Blue Sky Hotel",
     location: { city: "Porto Alegre", state: "RS" },
     image:
@@ -261,7 +266,7 @@ export const resorts = [
     price: 340.0,
   },
   {
-    id: 7,
+    id: "7",
     name: "Wonderful View Hotel",
     location: { city: "Fortaleza", state: "CE" },
     image:
@@ -270,7 +275,7 @@ export const resorts = [
     price: 430.0,
   },
   {
-    id: 8,
+    id: "8",
     name: "Tropical Garden Hotel",
     location: { city: "Manaus", state: "AM" },
     image:
@@ -279,7 +284,7 @@ export const resorts = [
     price: 370.0,
   },
   {
-    id: 9,
+    id: "9",
     name: "Sand Point Hotel",
     location: { city: "Natal", state: "RN" },
     image:
@@ -288,7 +293,7 @@ export const resorts = [
     price: 410.0,
   },
   {
-    id: 10,
+    id: "10",
     name: "Beautiful Stone Hotel",
     location: { city: "Brasília", state: "DF" },
     image:

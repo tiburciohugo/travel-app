@@ -2,8 +2,10 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../data";
-import { Resort } from "../../types/types";
+import { Resort, RootStackParamList } from "../../types/types";
 import { Dimensions } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 const windowWidth = Dimensions.get("window").width;
 
@@ -13,10 +15,17 @@ type ResortCardProps = {
 };
 
 export default function ResortsCard({ resort }: ResortCardProps) {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [isFavorite, setIsFavorite] = React.useState(false);
 
   return (
-    <TouchableOpacity style={styles.card}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate("ResortDetails", { resortId: resort.id })
+      }
+      style={styles.card}
+    >
       <TouchableOpacity
         onPress={() => setIsFavorite(!isFavorite)}
         style={styles.favorite}

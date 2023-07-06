@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { Image } from "react-native";
-import { colors, locations } from "../../data";
+import { colors } from "../../data";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import { Location, RootStackParamList } from "../../types/types";
 import { Dimensions } from "react-native";

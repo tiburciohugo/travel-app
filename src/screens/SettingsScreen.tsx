@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect } from "react";
-import { View, Text, Switch, StyleSheet } from "react-native";
+import { View, Text, Switch, StyleSheet, Image } from "react-native";
 import { colors } from "../../data";
 import { useNavigation } from "@react-navigation/native";
 
@@ -12,12 +12,18 @@ export default function SettingsScreen() {
     navigation.setOptions({
       headerStyle: {
         backgroundColor: colors.blue.bg,
-      }
+      },
     });
   }, [navigation]);
 
   return (
     <View style={styles.container}>
+      <Image
+        source={require("../../assets/icon.png")}
+        alt="Icon"
+        style={{ width: 100, height: 100, alignSelf: "center", marginBottom: 70,}}
+      />
+
       <View style={styles.settingRow}>
         <Text style={styles.settingText}>Enable Notifications</Text>
         <Switch

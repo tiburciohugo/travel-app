@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { RouteProp, useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../../types/types";
-import { colors, locations } from "../../data";
+import { colors, globalStyles, locations } from "../../data";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function LocationDetailsScreen({
@@ -61,7 +61,7 @@ export default function LocationDetailsScreen({
           </View>
         </View>
 
-        <TouchableOpacity>
+        <TouchableOpacity style={globalStyles.dropShadow}>
           <Text style={styles.buyButton}>Reservar Agora</Text>
         </TouchableOpacity>
       </View>
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 16,
     marginBottom: 10,
-    color: colors.blue[7],
+    color: colors.blue[6],
     textAlign: "center",
   },
   details: {
@@ -127,6 +127,7 @@ const styles = StyleSheet.create({
   smallText: {
     fontSize: 12,
     fontWeight: "bold",
+    color: colors.gray[3],
   },
   buyButton: {
     color: "white",
