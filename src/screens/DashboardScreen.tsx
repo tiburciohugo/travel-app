@@ -1,15 +1,8 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  FlatList,
-} from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { colors, globalStyles } from "../../data";
+import { colors } from "../../data";
 import Categories from "../components/Categories";
 import Discover from "../components/Discover";
 import Resorts from "../components/Resorts";
@@ -27,7 +20,11 @@ export default function DashboardScreen() {
   const navigation = useNavigation();
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const sections = [{ id: "categories" }, { id: "discover" }, { id: "resorts" }];
+  const sections = [
+    { id: "categories" },
+    { id: "discover" },
+    { id: "resorts" },
+  ];
 
   const renderItem = ({ item }: RenderItemProps) => {
     if (item.id === "categories") {
