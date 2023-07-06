@@ -14,9 +14,9 @@ export default function ProfileScreen() {
         onPress={() => navigation.goBack()}
       >
         <Ionicons
-          name="chevron-back-circle-outline"
-          size={34}
-          color={colors.blue[7]}
+          name="chevron-back-sharp"
+          size={24}
+          color={colors.blue[4]}
         />
       </TouchableOpacity>
       <View style={styles.header}></View>
@@ -48,6 +48,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 40,
     left: 26,
+    zIndex: 1,
+    backgroundColor: "white",
+    borderRadius: 50,
   },
   header: {
     width: "100%",

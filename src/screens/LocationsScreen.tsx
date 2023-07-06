@@ -22,7 +22,7 @@ export default function LocationsScreen() {
           justifyContent: "space-between",
         }}
       >
-        <Text style={styles.title}>Locations</Text>
+        <Text style={styles.title}>Destinos</Text>
       </View>
 
       <FlatList

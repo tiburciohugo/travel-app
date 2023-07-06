@@ -14,6 +14,8 @@ export type RootStackParamList = {
     | { screen: "Dashboard" }
     | { screen: "Locations" }
     | { screen: "Resorts" };
+  LocationDetails: { locationId: string };
+  ResortDetails: { resortId: string };
 };
 
 export type BottomTabParamList = {
@@ -24,11 +26,13 @@ export type BottomTabParamList = {
 };
 
 export type Location = {
+  id: string;
   name: string;
   image: string;
   price: number;
   departureDate: string;
   returnDate: string;
+  description: string;
 };
 
 export type Resort = {

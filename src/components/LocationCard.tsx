@@ -2,10 +2,12 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { Image } from "react-native";
-import { colors } from "../../data";
+import { colors, locations } from "../../data";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
-import { Location } from "../../types/types";
+import { Location, RootStackParamList } from "../../types/types";
 import { Dimensions } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 const windowWidth = Dimensions.get("window").width;
 
@@ -14,10 +16,17 @@ type LocationCardProps = {
 };
 
 export default function LocationCard({ location }: LocationCardProps) {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [isFavorite, setIsFavorite] = React.useState(false);
 
   return (
-    <TouchableOpacity style={styles.card}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate("LocationDetails", { locationId: location.id })
+      }
+      style={styles.card}
+    >
       <TouchableOpacity
         onPress={() => setIsFavorite(!isFavorite)}
         style={styles.favorite}

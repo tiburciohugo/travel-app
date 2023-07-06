@@ -44,7 +44,7 @@ export default function BottomTab() {
         name="Locations"
         component={LocationsScreen}
         options={{
-          tabBarLabel: "Locais",
+          tabBarLabel: "Destinos",
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Entypo
