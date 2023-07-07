@@ -9,12 +9,16 @@ import {
 import React from "react";
 import { StyleSheet } from "react-native";
 import { SearchBar } from "@rneui/themed";
-import { colors, globalStyles, locations, resorts } from "../../data";
-import { Location, Resort } from "../../types/types";
+import { colors, locations, resorts } from "../../data";
+import { Location, Resort, RootStackParamList } from "../../types/types";
 import { MaterialIcons } from "@expo/vector-icons";
 import useDebounce from "../../hooks/useDebounce";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 export default function Search() {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [search, setSearch] = React.useState("");
   const [searchResults, setSearchResults] = React.useState<
     (Location | Resort)[]
@@ -25,6 +29,7 @@ export default function Search() {
 
   React.useEffect(() => {
     if (debouncedSearchTerm) {
+      setIsLoading(true);
       const lowerCaseSearch = debouncedSearchTerm.toLowerCase();
 
       let locationsResults = locations.filter((location) =>
@@ -36,14 +41,11 @@ export default function Search() {
       );
 
       setSearchResults([...locationsResults, ...resortsResults]);
+      setIsLoading(false);
     } else {
       setSearchResults([]);
     }
   }, [debouncedSearchTerm]);
-
-  React.useEffect(() => {
-    console.log(searchResults);
-  }, [searchResults]);
 
   const handleSearch = (search: string) => {
     setIsLoading(true);
@@ -68,17 +70,6 @@ export default function Search() {
       color={colors.blue[3]}
     />
   );
-
-  // if (isLoading) {
-  //   return (
-  //     <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
-  //       <ActivityIndicator
-  //         size="large"
-  //         color={colors.blue[3]}
-  //       />
-  //     </View>
-  //   );
-  // }
 
   return (
     <>
@@ -108,16 +99,23 @@ export default function Search() {
         />
       </View>
 
-      {isLoading ? (
+      {isLoading && (
         <View
-          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 20,
+          }}
         >
           <ActivityIndicator
             size="large"
             color={colors.blue[3]}
           />
         </View>
-      ) : (
+      )}
+
+      {search && (
         <View style={styles.searchResultsContainer}>
           <Text style={styles.searchResultsTitle}>Resultados da busca:</Text>
 
@@ -127,7 +125,18 @@ export default function Search() {
               ("departureDate" in item ? "l" : "r") + item.id
             }
             renderItem={({ item }) => (
-              <TouchableOpacity style={styles.searchResultsCard}>
+              <TouchableOpacity
+                onPress={() =>
+                  "departureDate" in item
+                    ? navigation.navigate("LocationDetails", {
+                        locationId: item.id,
+                      })
+                    : navigation.navigate("ResortDetails", {
+                        resortId: item.id,
+                      })
+                }
+                style={styles.searchResultsCard}
+              >
                 <Image
                   style={{
                     width: 100,
@@ -175,7 +184,7 @@ const styles = StyleSheet.create({
   },
   searchResultsContainer: {
     marginTop: 20,
-    paddingHorizontal: 20,    
+    paddingHorizontal: 20,
     width: "100%",
     flex: 1,
     justifyContent: "center",

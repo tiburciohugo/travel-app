@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "travel-app",
+    "name": "Travel App",
     "slug": "travel-app",
     "version": "1.0.0",
+    "description": "Agende sua viagem ou acomodação facilmente com a Travel App.",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -10,18 +11,33 @@
       "image": "./assets/splash.png",
       "resizeMode": "cover"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.tiburciohugo.travelapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "49091368-80c1-4e73-866f-4e7f9f8b206d"
+      }
+    },
+    "owner": "tiburciohugo",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/49091368-80c1-4e73-866f-4e7f9f8b206d"
     }
   }
 }
