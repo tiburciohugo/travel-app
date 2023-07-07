@@ -1,6 +1,3 @@
-import { Resort } from 'src/types/types';
-import { locations } from './../data';
-
 export type RootStackParamList = {
   Welcome: undefined;
   Home: undefined;

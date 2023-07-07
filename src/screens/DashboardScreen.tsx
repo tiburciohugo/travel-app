@@ -19,6 +19,7 @@ type RenderItemProps = {
 export default function DashboardScreen() {
   const navigation = useNavigation();
   const [isLoading, setIsLoading] = React.useState(false);
+  const [searchQuery, setSearchQuery] = React.useState("");
 
   const sections = [
     { id: "categories" },
@@ -55,6 +56,8 @@ export default function DashboardScreen() {
       headerShown: false,
     });
   }, [navigation]);
+
+  
 
   return (
     <SafeAreaView style={styles.container}>
